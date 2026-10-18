@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 7f;
 
     private bool isGrounded;
-    private bool facingRight = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,15 +39,6 @@ public class PlayerController : MonoBehaviour
 
         rd.linearVelocity = new Vector2(move * moveSpeed, rd.linearVelocity.y);
 
-        // Volteo visual
-        if (move < 0 && facingRight)
-        {
-            Flip();
-        }
-        else if (move > 0 && !facingRight)
-        {
-            Flip();
-        }
 
         if (keyboard.spaceKey.wasPressedThisFrame && isGrounded)
         {
@@ -75,13 +65,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Voltear al personaje
-    void Flip()
-    {
-        facingRight = !facingRight;
-
-        Vector3 scale = transform.localScale;
-        scale.x *= -1f;
-        transform.localScale = scale;
-    }
 }
